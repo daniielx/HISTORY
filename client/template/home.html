@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <link rel = "stylesheet" href = "../css/home.css">
+</head>
+<body>
+    <div class="titleAdmin">
+        <h3>Admin</h3>
+    </div>
+    <button type="button" onclick="openForm()">Create test</button>
+    <br><br>
+    <div id="adminForm" class="adminFormSupply" style="display:none">
+        <form action="">
+            <label for="questionAdmin">Question:</label>
+            <textarea id="questionAdmin" rows="4" cols="50"></textarea>
+            <br><br>
+            <label for="answerKeyAdmin">Answer key:</label>
+            <textarea id="answerKeyAdmin" rows="4" cols="50"></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Cancel" onclick="cancelForm()">
+        </form>
+    </div>
+    <script src="../javascript/home.js"></script>
+</body>
+</html>
