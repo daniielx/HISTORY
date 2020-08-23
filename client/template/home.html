@@ -12,16 +12,19 @@
     <button type="button" onclick="openForm()">Create test</button>
     <br><br>
     <div id="adminForm" class="adminFormSupply" style="display:none">
-        <form action="">
             <label for="questionAdmin">Question:</label>
             <textarea id="questionAdmin" rows="4" cols="50"></textarea>
             <br><br>
-            <label for="answerKeyAdmin">Answer key:</label>
-            <textarea id="answerKeyAdmin" rows="4" cols="50"></textarea>
+            <div id="valueArea">
+                <div id="valueAreaOriginal">
+                    <label for="answerKeyAdmin">Answer key:</label>
+                    <textarea id="answerKeyAdmin" rows="4" cols="50"></textarea>
+                    <button type="button" onclick="setKey()">Mark key</button>
+                </div>
+            </div>
             <br><br>
-            <input type="submit" value="Submit">
+            <button type="button" onclick="submit()">Submit</button>
             <input type="reset" value="Cancel" onclick="cancelForm()">
-        </form>
     </div>
     <script src="../javascript/home.js"></script>
 </body>
