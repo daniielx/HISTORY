@@ -1,0 +1,9 @@
+.inputKey {
+    background-color: white;
+    color: black;
+    padding: 0 5px;
+}
+
+.inputKey:hover {
+    background-color: #e7e7e7;
+}
