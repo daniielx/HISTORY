@@ -89,6 +89,10 @@ function editAnswer(backupElementAnswer) {
 function submit() {
     const questionAdmin = document.getElementById("questionAdmin").value;
     let answerString = "";
+    if(answerArr.length < 1) {
+        alert("Note: markup the answer keys");
+        return;
+    }
     answerArr.forEach(function (item){
         if(item.type === 0) {
             answerString = answerString + " " +item.value;
@@ -101,7 +105,8 @@ function submit() {
         key : questionAdmin,
         value: answerString
     }
-    let JSONString = JSON.stringify(obj);
+    let jsonString = JSON.stringify(obj);
+    console.log(jsonString);
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
@@ -110,5 +115,5 @@ function submit() {
     };
     xhttp.open("POST", "http://localhost:8080/submit", true);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(JSONString);
+    xhttp.send(jsonString);
 }
