@@ -1,9 +1,21 @@
-.inputKey {
+.inputKeyT0 {
     background-color: white;
     color: black;
     padding: 0 5px;
 }
 
-.inputKey:hover {
+.inputKeyT1 {
+    background-color: #008CBA;
+    color: white;
+    padding: 0 5px;
+}
+
+.inputKeyT0:hover {
     background-color: #e7e7e7;
+    color: black;
+}
+
+.inputKeyT1:hover {
+    background-color: #e7e7e7;
+    color: black;
 }

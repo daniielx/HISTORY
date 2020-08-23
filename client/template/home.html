@@ -12,7 +12,6 @@
     <button type="button" onclick="openForm()">Create test</button>
     <br><br>
     <div id="adminForm" class="adminFormSupply" style="display:none">
-        <form action="">
             <label for="questionAdmin">Question:</label>
             <textarea id="questionAdmin" rows="4" cols="50"></textarea>
             <br><br>
@@ -24,9 +23,8 @@
                 </div>
             </div>
             <br><br>
-            <input type="submit" value="Submit">
+            <button type="button" onclick="submit()">Submit</button>
             <input type="reset" value="Cancel" onclick="cancelForm()">
-        </form>
     </div>
     <script src="../javascript/home.js"></script>
 </body>
