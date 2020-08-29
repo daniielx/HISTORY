@@ -1,5 +1,7 @@
 package com.edu.history;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,21 @@ import java.util.regex.Matcher;
 public class HistoryAction {
 
     private DictionaryService dictionaryService;
-
     @Autowired
     public void setDictionaryService(DictionaryService dictionaryService) {
         this.dictionaryService = dictionaryService;
+    }
+
+    private DBService dbService;
+    @Autowired
+    public void setDbService(DBService dbService) {
+        this.dbService = dbService;
+    }
+
+    private QuestionRepository questionRepository;
+    @Autowired
+    public void setQuestionRepository(QuestionRepository questionRepository) {
+        this.questionRepository = questionRepository;
     }
 
     public void parseInput(String jsonString) {
@@ -31,8 +44,16 @@ public class HistoryAction {
                 markUp.add(word.replaceAll(Matcher.quoteReplacement("$"),"").strip());
             }
         });
-
+        Question q = dbService.AdminInfoSave(key,newValue,markUp);
+        System.out.println(q);
+//        System.out.println(questionRepository.findById());
         dictionaryService.storeMarkup(markUp);
 
     }
+
+    public String getTest(String id) {
+        return dbService.getTestById(id).toString();
+    }
+
+
 }
