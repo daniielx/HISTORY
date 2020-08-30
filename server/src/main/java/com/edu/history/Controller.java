@@ -21,10 +21,18 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "/submit")
+    @RequestMapping(method = RequestMethod.POST, value = "admin/submit")
     public String route(@RequestBody String jsonString) {
         System.out.println(jsonString);
         historyAction.parseInput(jsonString);
+        return jsonString;
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "user/submit/{id}")
+    public String routePOST(@PathVariable String id, @RequestBody String jsonString) {
+        System.out.println(id);
+        System.out.println(jsonString);
         return jsonString;
     }
 
