@@ -3,16 +3,8 @@ let valueArr = [];
 
 function openTest() {
     const testId = document.getElementById("testId").value;
-    const xhttp = new XMLHttpRequest();
-    let jsonArray;
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            jsonArray = JSON.parse(this.responseText);
-            previewQuestion(jsonArray);
-        }
-    };
-    xhttp.open("GET", "http://localhost:8080/test/" + testId, true);
-    xhttp.send();
+    let jsonArray = xmlHttpRequest("GET","http://localhost:8080/user/test/" + testId, null)
+    previewQuestion(jsonArray);
 }
 
 function previewQuestion(jsonArray) {
@@ -97,21 +89,13 @@ function submitValue() {
         answer.value = document.getElementById("value" + item).value;
         requestBody.push(answer);
     })
-    let jsonString = JSON.stringify(requestBody);
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            const userPreview = document.getElementById("userPreview");
-            while(userPreview.firstChild) {
-                userPreview.removeChild(userPreview.firstChild);
-            }
-            let epilogue = document.createElement("h3");
-            epilogue.innerHTML = "Thank you for taking the test."
-            userPreview.appendChild(epilogue);
-            alert(this.responseText);
-        }
-    };
-    xhttp.open("POST", "http://localhost:8080/user/submit/5f469784d5d6de0e7d5c941e", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(jsonString);
+    let response = xmlHttpRequest("POST", "http://localhost:8080/user/submit/5f469784d5d6de0e7d5c941e", requestBody);
+    console.log(response);
+    const userPreview = document.getElementById("userPreview");
+    while(userPreview.firstChild) {
+        userPreview.removeChild(userPreview.firstChild);
+    }
+    let epilogue = document.createElement("h3");
+    epilogue.innerHTML = "Thank you for taking the test."
+    userPreview.appendChild(epilogue);
 }

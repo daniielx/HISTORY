@@ -21,7 +21,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "admin/submit")
+    @RequestMapping(method = RequestMethod.POST, value = "admin/test/")
     public String route(@RequestBody String jsonString) {
         System.out.println(jsonString);
         historyAction.parseInput(jsonString);
@@ -29,7 +29,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "user/submit/{id}")
+    @RequestMapping(method = RequestMethod.POST, value = "user/test/{id}")
     public String routePOST(@PathVariable String id, @RequestBody String jsonString) {
         System.out.println(id);
         System.out.println(jsonString);
@@ -37,7 +37,7 @@ public class Controller {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.GET, value = "/test/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "user/test/{id}")
     public String routeGET(@PathVariable String id) {
         System.out.println(id);
         return historyAction.getTest(id);

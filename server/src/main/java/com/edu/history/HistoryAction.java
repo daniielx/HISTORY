@@ -1,7 +1,5 @@
 package com.edu.history;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +51,10 @@ public class HistoryAction {
 
     public String getTest(String id) {
         return dbService.getTestById(id).toString();
+    }
+
+    public void storeTest() {
+
     }
 
 
