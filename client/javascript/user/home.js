@@ -1,13 +1,12 @@
 
 let valueArr = [];
 
-function openTest() {
+async function openTest() {
     const testId = document.getElementById("testId").value;
-    let jsonArray = xmlHttpRequest("GET","http://localhost:8080/user/test/" + testId, null)
-    previewQuestion(jsonArray);
+    xmlHttpRequest("GET","http://localhost:8080/user/test/" + testId, null, previewQuestion);
 }
 
-function previewQuestion(jsonArray) {
+let previewQuestion = function(jsonArray) {
     let test = document.createElement("div");
     jsonArray.forEach(function(item, index) {
         let div = document.createElement("div");
@@ -67,7 +66,6 @@ function removeFromSubmit(id) {
     if(valueArr.length !== 0) {
         valueArr = valueArr.filter(item => item !== id);
     }
-    console.log(valueArr);
 }
 
 function  addToSubmit(id) {
@@ -75,7 +73,6 @@ function  addToSubmit(id) {
     else {
         valueArr.push(id);
     }
-    console.log(valueArr);
 }
 
 function submitValue() {
@@ -89,8 +86,7 @@ function submitValue() {
         answer.value = document.getElementById("value" + item).value;
         requestBody.push(answer);
     })
-    let response = xmlHttpRequest("POST", "http://localhost:8080/user/submit/5f469784d5d6de0e7d5c941e", requestBody);
-    console.log(response);
+    xmlHttpRequest("POST", "http://localhost:8080/user/test/5f469784d5d6de0e7d5c941e", requestBody, function(){} );
     const userPreview = document.getElementById("userPreview");
     while(userPreview.firstChild) {
         userPreview.removeChild(userPreview.firstChild);

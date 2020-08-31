@@ -105,7 +105,6 @@ function submit() {
         key : questionAdmin,
         value: answerString
     }
-    let response = xmlHttpRequest("POST", "http://localhost:8080/admin/test/", requestBodyJSON);
-    console.log(response);
+    xmlHttpRequest("POST", "http://localhost:8080/admin/test/", requestBodyJSON, function(){});
 }
 
