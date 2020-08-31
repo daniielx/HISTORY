@@ -1,7 +1,7 @@
 
 let valueArr = [];
 
-async function openTest() {
+function openTest() {
     const testId = document.getElementById("testId").value;
     xmlHttpRequest("GET","http://localhost:8080/user/test/" + testId, null, previewQuestion);
 }
